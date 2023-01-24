@@ -4,6 +4,6 @@
 - [X] Setup settings.py
 - [X] Create app
 - [X] Configure Views and Urls.py files
-- [ ] Basic Frontend
-- [ ] Models
-- [ ] More
+- [X] Basic Frontend
+- [X] Models
+- [ ] Views - Authenticatication of User
