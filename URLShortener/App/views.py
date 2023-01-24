@@ -9,3 +9,6 @@ def login(request):
 
 def signup(request):
     return render(request,'App/signup.html')
+
+def dashboard(request):
+    return render(request,'App/dashboard.html')
