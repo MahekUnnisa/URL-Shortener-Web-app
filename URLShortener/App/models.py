@@ -12,6 +12,7 @@ class User(models.Model):
     email = models.EmailField(blank=False)
     phone_number = models.CharField(blank=False, max_length=12)
     occupation = models.CharField(blank=True, max_length=20)
+    password = models.CharField(blank=False)
 
     def __str__(self):
         return self.full_name
