@@ -18,6 +18,15 @@ class Link(models.Model):
 
         return new_link
 
+    def save(self,*args, **kwargs):
+        if not self.shortened_link:
+            new_link=self.shortener()
+            self.shortened_link=new_link
+        return super().save(*args, **kwargs)
+        
+    def __str__(self):
+        return self.original_link
+
 class User(models.Model):
 
     full_name = models.CharField(max_length=20, blank=False)

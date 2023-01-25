@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # django-brwser-reload(devdependency)
+    # django-browser-reload(devdependency)
     "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
@@ -82,10 +82,14 @@ WSGI_APPLICATION = 'URLShortener.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'railway',
+       'USER': 'postgres',
+       'PASSWORD': 'EmEPK5KgGMo2SKVWTCtU',
+       'HOST': 'containers-us-west-177.railway.app',
+       'PORT': '7964',
+   }
 }
 
 
@@ -129,3 +133,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# config
+HOST_URL = 'http://127.0.0.1:8000'
