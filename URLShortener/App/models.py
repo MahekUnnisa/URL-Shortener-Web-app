@@ -31,8 +31,6 @@ class User(models.Model):
 
     full_name = models.CharField(max_length=20, blank=False)
     email = models.EmailField(blank=False)
-    phone_number = models.CharField(blank=False, max_length=12)
-    occupation = models.CharField(blank=True, max_length=20)
     password = models.CharField(blank=False, max_length=15)
 
     def __str__(self):
