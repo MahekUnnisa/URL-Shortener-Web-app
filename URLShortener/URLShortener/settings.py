@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'App.apps.AppConfig',
     # devdependency
     'django_browser_reload',
+    # apis
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
