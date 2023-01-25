@@ -162,3 +162,4 @@ cython_debug/
 # dummy tailwindConfig file
 tailwind.config.js
 test.html
+text.py
