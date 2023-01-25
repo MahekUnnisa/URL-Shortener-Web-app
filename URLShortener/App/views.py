@@ -16,7 +16,6 @@ def index(request):
 
 def handleLogin(request):
     # return render(request,'App/login.html')
-
     if request.method == "POST":
         loginemail = request.POST.get('loginemail', False)
         loginpassword = request.POST.get('loginpassword', False)
@@ -30,7 +29,7 @@ def handleLogin(request):
         else:
             messages.success(request, 'Invalid Credentials, please try again')
             return redirect('/')
-    return HttpResponse('404 - Not Found')
+    return render(request,'App/login.html')
 
 def handleSignup(request):
     if request.method=='POST':
@@ -59,12 +58,12 @@ def handleSignup(request):
         messages.success(request, "You are registered successfully") 
         return redirect('/')
     else:
-        return HttpResponse('404 - Not Found')
+        return render(request,'App/signup.html')
 
     # return render(request,'App/signup.html')
 
 def dashboard(request):
-    if  not request.user.is_authenticated:
+    if not request.user.is_authenticated:
         messages.error(request, 'Login reguired')
         return render(request,'App/login.html')
     else:

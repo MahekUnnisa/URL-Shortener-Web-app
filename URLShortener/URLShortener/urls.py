@@ -19,6 +19,6 @@ from App.views import Redirector
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
-    path('',include('App.urls')),
-    path('<str:shortener_link>/',Redirector.as_view(),name='redirector')
+    path('', include('App.urls')),
+    path('<str:shortener_link>/', Redirector.as_view(),name='redirector')
 ]
