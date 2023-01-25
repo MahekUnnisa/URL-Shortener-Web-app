@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 def index(request):
     return render(request,'App/index.html')
 
-def login(request):
+def handleLogin(request):
     # return render(request,'App/login.html')
 
     if request.method == "POST":
@@ -25,7 +25,7 @@ def login(request):
             return redirect('/')
     return HttpResponse('404 - Not Found')
 
-def signup(request):
+def handleSignup(request):
     if request.method=='POST':
         
         full_name = request.POST.get('full_name', False)
