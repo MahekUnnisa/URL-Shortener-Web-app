@@ -24,9 +24,10 @@ def handleLogin(request):
     # return render(request,'App/login.html')
     if request.method == "POST":
         loginemail = request.POST.get('loginemail', False)
+        loginname = request.POST.get('loginname', False)
         loginpassword = request.POST.get('loginpassword', False)
 
-        user = authenticate(username = loginemail, password = loginpassword)
+        user = authenticate(username = loginname,email=loginemail, password = loginpassword)
 
         if user is not None:
             login(request,user)
@@ -41,7 +42,6 @@ def handleSignup(request):
     if request.method=='POST':
         
         full_name = request.POST.get('full_name', False)
-        phone_number = request.POST.get('phone_number', False)
         email  = request.POST.get('email',False)
         password  = request.POST.get('password',False)
         confirmpassword  = request.POST.get('confirmpassword',False)
