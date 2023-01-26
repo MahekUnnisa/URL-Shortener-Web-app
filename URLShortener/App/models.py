@@ -2,11 +2,15 @@ from django.db import models
 from django.conf import settings
 from random import choices
 from string import ascii_letters
+import datetime
 # Create your models here.
 
 class Link(models.Model):
     original_link=models.URLField()
     shortened_link=models.URLField(blank=True,null=True)
+    click_count = models.IntegerField(default=0)
+
+    expiration_date = models.DateTimeField(default=datetime.datetime.now() + datetime.timedelta(days=7))
 
     def shortener(self):
         while True:

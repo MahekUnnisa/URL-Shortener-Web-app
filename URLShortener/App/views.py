@@ -1,7 +1,8 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.http import Http404
 
 from rest_framework.generics import ListAPIView,CreateAPIView
 from django.views import View
@@ -11,6 +12,7 @@ from .models import Link
 from .serializers import LinkSerializer
 
 import re
+import datetime
 # to check if name has only letters and space
 def is_valid_name(name):
     pattern = r'^[a-zA-Z\s]+$'
@@ -90,4 +92,11 @@ class Redirector(View):
     def get(self,request,shortener_link,*args, **kwargs):
         shortener_link=settings.HOST_URL+'/'+self.kwargs['shortener_link']
         redirect_link=Link.objects.filter(shortened_link=shortener_link).first().original_link
+        url = get_object_or_404(Link,shortened_link = shortener_link)
+        if url.expiration_date < datetime.datetime.now():
+            # Raise a 404 or redirect to an error page
+            raise Http404("This link has expired.")
+        url.click_count +=1
+        url.save()
         return redirect(redirect_link)
+
