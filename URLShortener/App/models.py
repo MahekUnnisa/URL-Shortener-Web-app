@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils import timezone
 from random import choices
 from string import ascii_letters
 from datetime import datetime, timedelta
@@ -11,7 +12,7 @@ class Link(models.Model):
     custom_string = models.CharField(max_length=15)
 
     click_count = models.IntegerField(default=0)
-    expiration_date = models.DateTimeField(default=datetime.now() + timedelta(days=7))
+    expiration_date = models.DateTimeField(default=timezone.now() + timezone.timedelta(days=7))
     
 
     def shortener(self):
