@@ -38,12 +38,4 @@ class Link(models.Model):
     def __str__(self):
         return self.original_link
 
-class User(models.Model):
-
-    full_name = models.CharField(max_length=20, blank=False)
-    email = models.EmailField(blank=False)
-    password = models.CharField(blank=False, max_length=15)
-
-    def __str__(self):
-        return self.full_name
 

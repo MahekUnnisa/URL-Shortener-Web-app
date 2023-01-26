@@ -2,44 +2,45 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.http import Http404
 
 from rest_framework.generics import ListAPIView,CreateAPIView
 from django.views import View
 from django.conf import settings
 
+from .forms import LinkForm
 from .models import Link
 from .serializers import LinkSerializer
 
 import re
 import datetime
-# import pytz
-# to check if name has only letters and space
-def is_valid_name(name):
-    pattern = r'^[a-zA-Z\s]+$'
-    return bool(re.match(pattern, name))
 
 # Create your views here.
 def index(request):
     return render(request,'App/index.html')
 
 def handleLogin(request):
-    # return render(request,'App/login.html')
-    if request.method == "POST":
-        loginemail = request.POST.get('loginemail', False)
-        loginname = request.POST.get('loginname', False)
-        loginpassword = request.POST.get('loginpassword', False)
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, "Successfully logged in")
+                return redirect('/dashboard')
+            else:
+                messages.error(request, "Invalid username or password.")
+    else:
+        form = AuthenticationForm(data=request.POST)
+    return render(request, 'App/registrations/login.html', {'form': form})
 
-        user = authenticate(username = loginname,email=loginemail, password = loginpassword)
-
-        if user is not None:
-            login(request,user)
-            messages.success(request, "Successfully logged in")
-            return redirect('/dashboard')
-        else:
-            messages.success(request, 'Invalid Credentials, please try again')
-            return redirect('/login')
-    return render(request,'App/login.html')
+# to check if name has only letters and space
+def is_valid_name(name):
+    pattern = r'^[a-zA-Z\s]+$'
+    return bool(re.match(pattern, name))
 
 def handleSignup(request):
     if request.method=='POST':
@@ -64,14 +65,23 @@ def handleSignup(request):
         messages.success(request, "You are registered successfully") 
         return redirect('/login')
     else:
-        return render(request,'App/signup.html')
+        return render(request,'App/registrations/signup.html')
 
-    # return render(request,'App/signup.html')
+def create(request):
+    if request.method == 'POST':
+        form = LinkForm(request.POST)
+        if form.is_valid():
+            link = form.save()
+            link.shortener()
+            link.save()
+            return redirect('/dashboard')
+    else:
+        form = LinkForm(request.GET)
+    return render(request, 'App/create.html', {'form' : form })
 
 def dashboard(request):
-    if not request.user.is_authenticated:
-        messages.error(request, 'Login reguired')
-        return render(request,'App/login.html')
+    if  not request.user.is_authenticated:
+        return HttpResponse('Login required')
     else:
         return render(request,'App/dashboard.html')
 
