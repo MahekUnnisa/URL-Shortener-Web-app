@@ -93,7 +93,7 @@ class Redirector(View):
     def get(self,request,custom_string,random_string,*args, **kwargs):
         shortener_link=settings.HOST_URL+'/'+custom_string+'/'+random_string
         link = get_object_or_404(Link,shortened_link = shortener_link)
-        if link.expiration_date < datetime.now(pytz.utc):
+        if link.is_expired:
             raise Http404("This link has expired.")
         link.click_count +=1
         link.save()
