@@ -89,14 +89,14 @@ class ShortenerCreateApiView(CreateAPIView):
 
 
 class Redirector(View):
-    def get(self,request,shortener_link,*args, **kwargs):
-        shortener_link=settings.HOST_URL+'/'+self.kwargs['shortener_link']
-        redirect_link=Link.objects.filter(shortened_link=shortener_link).first().original_link
-        url = get_object_or_404(Link,shortened_link = shortener_link)
-        if url.expiration_date < datetime.datetime.now():
+    def get(self,request,custom_string,random_string,*args, **kwargs):
+        shortener_link=settings.HOST_URL+'/'+custom_string+'/'+random_string
+        link = get_object_or_404(Link,shortened_link = shortener_link)
+        if link.expiration_date < datetime.datetime.now():
             # Raise a 404 or redirect to an error page
             raise Http404("This link has expired.")
-        url.click_count +=1
-        url.save()
-        return redirect(redirect_link)
+        link.click_count +=1
+        link.save()
+        return redirect(link.original_link)
+
 

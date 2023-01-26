@@ -90,8 +90,8 @@ DATABASES = {
        'NAME': 'railway',
        'USER': 'postgres',
        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
-       'HOST': 'containers-us-west-145.railway.app',
-       'PORT': '6320',
+       'HOST': 'containers-us-west-191.railway.app',
+       'PORT': '6158',
    }
 }
 

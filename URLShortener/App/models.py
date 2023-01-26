@@ -8,6 +8,8 @@ import datetime
 class Link(models.Model):
     original_link=models.URLField()
     shortened_link=models.URLField(blank=True,null=True)
+    custom_string = models.CharField(max_length=15)
+
     click_count = models.IntegerField(default=0)
 
     expiration_date = models.DateTimeField(default=datetime.datetime.now() + datetime.timedelta(days=7))
@@ -15,7 +17,8 @@ class Link(models.Model):
     def shortener(self):
         while True:
             random_string=''.join(choices(ascii_letters,k=6))
-            new_link=settings.HOST_URL+'/'+random_string
+            
+            new_link=settings.HOST_URL+'/'+self.custom_string+'/'+random_string
     
             if not Link.objects.filter(shortened_link=new_link).exists():
                 break
