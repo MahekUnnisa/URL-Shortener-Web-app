@@ -3,6 +3,7 @@ from django.conf import settings
 from random import choices
 from string import ascii_letters
 import datetime
+import pytz
 # Create your models here.
 
 class Link(models.Model):
@@ -11,8 +12,8 @@ class Link(models.Model):
     custom_string = models.CharField(max_length=15)
 
     click_count = models.IntegerField(default=0)
-
-    expiration_date = models.DateTimeField(default=datetime.datetime.now() + datetime.timedelta(days=7))
+    expiration_date = models.DateTimeField(default=datetime.now(pytz.utc) + datetime.timedelta(days=7))
+    
 
     def shortener(self):
         while True:
