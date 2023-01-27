@@ -84,14 +84,13 @@ def dashboard(request):
     if  not request.user.is_authenticated:
         return HttpResponse('Login required')
     else:
-        links = Link.objects.all()
-        links = Link.objects.filter(user=request.user).order_by('-created_at')
+        links = Link.objects.all().order_by('-created_at')
         context = {'links': links}
         return render(request,'App/dashboard.html', context)
 
 def linkDetails(request,link_id):
     link = Link.objects.get(id=link_id)
-    context = {'shortened_link': link.shortened_link, 'expiration_date': link.expiration_date, 'click_count':link.click_count, 'original_link':link.original_link}
+    context = {'shortened_link': link.shortened_link, 'expiration_date': link.expiration_date, 'click_count':link.click_count, 'original_link':link.original_link, 'created_at':link.created_at}
     return render(request, 'App/linkDetails.html', context)
 
 def handleLogout(request):

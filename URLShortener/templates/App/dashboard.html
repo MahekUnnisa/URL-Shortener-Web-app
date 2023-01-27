@@ -14,6 +14,7 @@
                     <th scope="col" class="px-6 py-3">Shortened Link</th>
                     <th scope="col" class="px-6 py-3">Expiration Date</th>
                     <th scope="col" class="px-6 py-3">Click Count</th>
+                    <th scope="col" class="px-6 py-3">Created At</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,7 @@
                     <td class="px-6 py-4 hover:text-purple-700"><a href="{{ link.shortened_link }}">{{ link.shortened_link }}</a></td>
                     <td class="px-6 py-4 "><a href="{{ link.expiration_date }}">{{ link.expiration_date }}</a></td>
                     <td class="px-6 py-4 "><a href="{{ link.click_count }}">{{ link.click_count }}</a></td>
+                    <td class="px-6 py-4 "><a href="{{ link.created_at }}">{{ link.created_at }}</a></td>
                 </tr>
                 {% endfor %}
             </tbody>    
