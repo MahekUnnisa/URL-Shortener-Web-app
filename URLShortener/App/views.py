@@ -74,7 +74,8 @@ def create(request):
             link = form.save()
             link.shortener()
             link.save()
-            return redirect('/dashboard')
+            return redirect('linkdetails', link_id=link.id)
+
     else:
         form = LinkForm(request.GET)
     return render(request, 'App/create.html', {'form' : form })
@@ -84,6 +85,11 @@ def dashboard(request):
         return HttpResponse('Login required')
     else:
         return render(request,'App/dashboard.html')
+
+def linkDetails(request,link_id):
+    link = Link.objects.get(id=link_id)
+    context = {'shortened_link': link.shortened_link, 'expiration_date': link.expiration_date, 'click_count':link.click_count, 'original_link':link.original_link}
+    return render(request, 'App/linkDetails.html', context)
 
 def handleLogout(request):
     logout(request)

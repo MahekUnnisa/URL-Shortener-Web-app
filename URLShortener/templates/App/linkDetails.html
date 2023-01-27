@@ -1,0 +1,10 @@
+{% extends './base.html' %}
+{% block title %}Link Details{% endblock title %}
+{% block body %}
+{% if user.is_authenticated %}
+<p>{{original_link}}</p>
+<p>{{shortened_link}}</p>
+<p>{{expiration_date}}</p>
+<p>{{click_count}}</p>
+{% endif %}
+{% endblock body%}

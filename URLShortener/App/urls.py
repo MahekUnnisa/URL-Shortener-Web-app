@@ -10,6 +10,7 @@ urlpatterns = [
     path('dashboard', views.dashboard, name = 'Dashboard'),
     path('logout',views.handleLogout, name='Logout'),
     path('create/',views.create, name='CreateNewLink'),
+    path('linkdetails/<int:link_id>/', views.linkDetails, name='linkdetails'),
     # api
     path('',ShortenerListAPIView.as_view(),name='all_links'),
     path('api/create/',ShortenerCreateApiView.as_view(),name='create_api'),
