@@ -14,4 +14,5 @@
 - [ ] filtering the links with the custom string
 - [ ] filtering the links with expiry date
 - [ ] more filtering options with click_count, user, created for better management
+- [ ] tailwindcss configuration
 **These are the tasks which I was unable to complete due to time constraint.**
