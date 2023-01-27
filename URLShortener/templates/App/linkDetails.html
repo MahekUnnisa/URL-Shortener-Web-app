@@ -2,9 +2,11 @@
 {% block title %}Link Details{% endblock title %}
 {% block body %}
 {% if user.is_authenticated %}
-<p>{{original_link}}</p>
-<p>{{shortened_link}}</p>
-<p>{{expiration_date}}</p>
-<p>{{click_count}}</p>
+<div class="my-24 flex items-center justify center flex-col">
+    <p class="max-w-lg text-xl font-semibold leading-normal text-gray-900 dark:text-white">Original link - {{original_link}}</p>
+    <p class="max-w-lg text-xl font-semibold leading-normal text-gray-900 dark:text-white">Shortened Link - {{shortened_link}}</p>
+    <p class="max-w-lg text-xl font-semibold leading-normal text-gray-900 dark:text-white">Expiry Date - {{expiration_date}}</p>
+    <p class="max-w-lg text-xl font-semibold leading-normal text-gray-900 dark:text-white">Click Count - {{click_count}}</p>
+</div>
 {% endif %}
 {% endblock body%}
