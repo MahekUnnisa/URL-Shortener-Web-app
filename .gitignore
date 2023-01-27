@@ -159,7 +159,3 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# dummy tailwindConfig file
-tailwind.config.js
-test.html
-text.py
