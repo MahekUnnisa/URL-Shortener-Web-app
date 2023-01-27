@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from .views import ShortenerCreateApiView, ShortenerListAPIView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('',views.index,name='Home'),
@@ -15,4 +17,4 @@ urlpatterns = [
     # api
     path('',ShortenerListAPIView.as_view(),name='all_links'),
     path('api/create/',ShortenerCreateApiView.as_view(),name='create_api'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

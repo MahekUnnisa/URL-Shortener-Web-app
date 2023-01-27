@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     # devdependency
     'django_browser_reload',
     # APIs
-    'rest_framework'
+    'rest_framework',
+    'compressor'
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,14 @@ USE_I18N = True
 
 USE_TZ = True
 
+COMPRESS_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
