@@ -33,7 +33,7 @@ class Link(models.Model):
         return super().save(*args, **kwargs)
 
     def is_expired(self):
-        return self.expiration_date < datetime.now()
+        return self.expiration_date < timezone.now()
         
     def __str__(self):
         return self.original_link

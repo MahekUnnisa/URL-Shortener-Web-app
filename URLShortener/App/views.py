@@ -81,12 +81,12 @@ def create(request):
     return render(request, 'App/create.html', {'form' : form })
 
 def dashboard(request):
-    if  not request.user.is_authenticated:
-        return HttpResponse('Login required')
-    else:
-        links = Link.objects.all().order_by('-created_at')
-        context = {'links': links}
-        return render(request,'App/dashboard.html', context)
+    # if  not request.user.is_authenticated:
+    #     return HttpResponse('Login required')
+    # else:
+    links = Link.objects.all().order_by('-created_at')
+    context = {'links': links}
+    return render(request,'App/dashboard.html', context)
 
 def linkDetails(request,link_id):
     link = Link.objects.get(id=link_id)
