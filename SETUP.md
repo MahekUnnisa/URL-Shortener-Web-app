@@ -5,7 +5,7 @@ This project is a URL shortener that allows users to shorten long URLs and track
 - Python 3.x
 - Django 2.x
 - PostgreSQL Installation(You can do an instance using railway.com)
-- Clone the repository: git clone https://github.com/MahekUnnisa/URL-Shortener-Web-app..git
+- Clone the repository: git clone https://github.com/MahekUnnisa/URL-Shortener-Web-app.git
 - Change into the project directory: cd urlshortener
 - Create and activate a virtual environment:
 
