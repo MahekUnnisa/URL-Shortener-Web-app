@@ -13,7 +13,7 @@ class Link(models.Model):
 
     click_count = models.IntegerField(default=0)
     expiration_date = models.DateTimeField(default=timezone.now() + timezone.timedelta(days=7))
-    
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def shortener(self):
         while True:
