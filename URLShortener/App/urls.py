@@ -17,6 +17,4 @@ urlpatterns = [
     # api
     path('',ShortenerListAPIView.as_view(),name='all_links'),
     path('api/create/',ShortenerCreateApiView.as_view(),name='create_api'),
-
-    path('test',views.test, name='Test')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
