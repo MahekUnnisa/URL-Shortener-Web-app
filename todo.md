@@ -4,10 +4,11 @@
 - [X] Shortening the link
 - [X] Adding a expiry date
 - [X] Ordering the link in latest to old order
-- [X] Implementting auth like signup, Login and Logout
+- [X] Implementing auth like signup, Login and Logout
 - [X] Dashbord to display all the links
 - [X] Implementing aclick COunt feature to count clicks
 - [X] Custom string in the url for organization
+- [X] implement caching and sessions
 ## Incompleted tasks
 - [ ] Displaying the links specific to user 
 - [ ] Changing the expiry date on the dashboard page.
