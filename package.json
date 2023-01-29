@@ -1,7 +1,4 @@
 {
-  "devDependencies": {
-    "tailwindcss": "^3.2.4"
-  },
   "name": "url-shortener",
   "description": "This repository is an assignment project of a URL hashing system using Django.\r Basically it works as a URL shortening web app.\r ## Tools\r ### Backend\r 1. Python - Django\r 2. Django REST framework\r 3. PostgreSQL\r Other libaries are specified with versions in requirements.txt file.",
   "version": "1.0.0",
@@ -36,12 +33,12 @@
     "lilconfig": "^2.0.6",
     "merge2": "^1.4.1",
     "micromatch": "^4.0.5",
-    "nanoid": "^3.3.4",
     "minimist": "^1.2.7",
-    "object-hash": "^3.0.0",
+    "nanoid": "^3.3.4",
     "normalize-path": "^3.0.0",
-    "picocolors": "^1.0.0",
+    "object-hash": "^3.0.0",
     "path-parse": "^1.0.7",
+    "picocolors": "^1.0.0",
     "picomatch": "^2.3.1",
     "pify": "^2.3.0",
     "postcss": "^8.4.21",
@@ -60,22 +57,24 @@
     "run-parallel": "^1.2.0",
     "source-map-js": "^1.0.2",
     "supports-preserve-symlinks-flag": "^1.0.0",
+    "tailwindcss": "^3.2.4",
     "to-regex-range": "^5.0.1",
     "util-deprecate": "^1.0.2",
     "xtend": "^4.0.2",
     "yaml": "^1.10.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss -i ./URLShortener/static/src/input.css -o ./URLShortener/static/dist/output.css --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MahekUnnisa/URL-Shortener-Web-app..git"
+    "url": "git+https://github.com/MahekUnnisa/URL-Shortener-Web-app.git"
   },
   "author": "Mahek Unnisa",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MahekUnnisa/URL-Shortener-Web-app./issues"
+    "url": "https://github.com/MahekUnnisa/URL-Shortener-Web-app/issues"
   },
-  "homepage": "https://github.com/MahekUnnisa/URL-Shortener-Web-app.#readme"
+  "homepage": "https://github.com/MahekUnnisa/URL-Shortener-Web-app#readme"
 }

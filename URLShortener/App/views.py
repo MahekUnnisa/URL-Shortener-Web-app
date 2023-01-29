@@ -146,3 +146,7 @@ class Redirector(View):
 def is_valid_name(name):
     pattern = r'^[a-zA-Z\s]+$'
     return bool(re.match(pattern, name))
+
+    # test
+def test(request):
+    return render(request,'App/test.html')
