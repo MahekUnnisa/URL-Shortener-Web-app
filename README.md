@@ -27,4 +27,4 @@ I used Flowbites prebuild code from their website.
 - [TailwindCSS](https://tailwindcss.com/docs/installation)
 
 ## Reference Images
-[Homepage](image_url) 
+<img align="center" src="https://github.com/MahekUnnisa/URL-Shortener-Web-app/blob/docs/ReferenceImages/Home.png"/>
