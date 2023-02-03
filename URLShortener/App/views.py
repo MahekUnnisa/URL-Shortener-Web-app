@@ -94,7 +94,7 @@ def dashboard(request):
 # Create a new link
 def create(request):
     if request.method == 'POST':
-
+    
         form = LinkForm(request.POST)
         if form.is_valid():
 
