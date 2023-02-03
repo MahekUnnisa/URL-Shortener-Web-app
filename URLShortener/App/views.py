@@ -93,16 +93,18 @@ def dashboard(request):
 
 # Create a new link
 def create(request):
+    
     if request.method == 'POST':
-
         form = LinkForm(request.POST)
+        # print(form.is_valid())
         if form.is_valid():
-
-            link = form.save()
+            link = form.save(commit=False)
             link.shortener()
-
             link.save()
             return redirect('/linkdetails', link_id=link.id)
+        if not form.is_valid():
+            for field in form.errors:
+                print(f"{field}: {form.errors[field]}")
 
     else:
         form = LinkForm(request.GET)
