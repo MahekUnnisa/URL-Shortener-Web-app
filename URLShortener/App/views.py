@@ -93,17 +93,14 @@ def dashboard(request):
 
 # Create a new link
 def create(request):
-    if request.method == 'POST':
     
+    if request.method == 'POST':
         form = LinkForm(request.POST)
         if form.is_valid():
-
             link = form.save()
             link.shortener()
-
             link.save()
-            return redirect('/linkdetails', link_id=link.id)
-
+            return redirect('linkdetails', link_id=link.id)
     else:
         form = LinkForm(request.GET)
     return render(request, 'App/create.html', {'form' : form })
