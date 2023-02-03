@@ -5,10 +5,9 @@ from django.utils import timezone
 from random import choices
 
 from string import ascii_letters
-
 # Model/Table to store the links
 class Link(models.Model):
-    original_link=models.URLField()
+    original_link=models.URLField(max_length=500)
     shortened_link=models.URLField(blank=True,null=True)
 
     custom_string = models.CharField(max_length=15)
