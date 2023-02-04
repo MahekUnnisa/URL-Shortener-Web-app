@@ -18,6 +18,8 @@ This project is a URL shortener that allows users to shorten long URLs and track
 - Install the dependencies: `pip install -r requirements.txt`
 - Create a new PostgreSQL database and update the settings in settings.py
 - Run migrations: `python manage.py makemigrations` & `python manage.py migrate`
+- Install tailwind using command `npm install package.json`
+- Build tailwind using command `tailwind starts command "npx tailwindcss -i ./static/src/input.css -o ./static/src/output.css --watch"`
 - Create a superuser: `python manage.py createsuperuser`
 - Press enter to enter default details
 - Run the server: `python manage.py runserver`
