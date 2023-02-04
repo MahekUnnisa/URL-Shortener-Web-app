@@ -5,7 +5,7 @@ from django.core.validators import URLValidator
 class LinkForm(forms.ModelForm):
 	class Meta:
 		model = Link
-		fields = ['original_link', 'custom_string', 'expiration_date']
+		fields = ('original_link', 'custom_string', 'expiration_date')
 
 	def clean_original_link(self):
 		original_link = self.cleaned_data['original_link']

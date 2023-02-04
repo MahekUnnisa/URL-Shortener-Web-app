@@ -93,14 +93,13 @@ def dashboard(request):
 
 # Create a new link
 def create(request):
-    
     if request.method == 'POST':
         form = LinkForm(request.POST)
         if form.is_valid():
             link = form.save()
             link.shortener()
             link.save()
-            return redirect('linkdetails', link_id=link.id)
+            return redirect('App:linkDetails', link_id=link.id)
     else:
         form = LinkForm(request.GET)
     return render(request, 'App/create.html', {'form' : form })
@@ -109,7 +108,7 @@ def create(request):
 def linkDetails(request,link_id):
     link = Link.objects.get(id=link_id)
 
-    context = {'shortened_link': link.shortened_link, 'expiration_date': link.expiration_date, 'click_count':link.click_count, 'original_link':link.original_link, 'created_at':link.created_at}
+    context = {'id':link.id, 'shortened_link': link.shortened_link, 'expiration_date': link.expiration_date, 'click_count':link.click_count, 'original_link':link.original_link, 'created_at':link.created_at}
 
     return render(request, 'App/linkDetails.html', context)
 
