@@ -23,4 +23,4 @@ urlpatterns = [
     path("__reload__/", include("django_browser_reload.urls")),
     path('', include('App.urls')),
     path('<str:custom_string>/<str:random_string>/', Redirector.as_view(),name='redirector'),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

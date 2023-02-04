@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'django_browser_reload',
     # APIs
     'rest_framework',
-    'compressor'
+    # css compressor
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -128,11 +129,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-COMPRESS_ROOT = os.path.join(BASE_DIR, "static")
+# COMPRESS_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
+STATIC_ROOT = os.path.join(BASE_DIR,"static")
 COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
