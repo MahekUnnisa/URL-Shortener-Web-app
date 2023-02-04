@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Custom apps
     'App.apps.AppConfig',
-    # devdependency
-    'django_browser_reload',
     # APIs
     'rest_framework',
     # css compressor
@@ -58,8 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # django-browser-reload(devdependency)
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'URLShortener.urls'
