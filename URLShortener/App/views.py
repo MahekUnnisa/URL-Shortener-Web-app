@@ -108,7 +108,7 @@ def create(request):
 def linkDetails(request,link_id):
     link = Link.objects.get(id=link_id)
 
-    context = {'id':link.id, 'shortened_link': link.shortened_link, 'expiration_date': link.expiration_date, 'click_count':link.click_count, 'original_link':link.original_link, 'created_at':link.created_at}
+    context = {'shortened_link': link.shortened_link, 'expiration_date': link.expiration_date, 'click_count':link.click_count, 'original_link':link.original_link, 'created_at':link.created_at}
 
     return render(request, 'App/linkDetails.html', context)
 
