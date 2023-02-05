@@ -85,6 +85,8 @@ def handleLogout(request):
 
 # All links page
 def dashboard(request):
+    # Links from only logged in user
+    links = Link.objects.filter(user=request.user)
     # Orders from latest to old
     links = Link.objects.all().order_by('-created_at')
 
